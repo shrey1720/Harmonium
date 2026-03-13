@@ -1,0 +1,259 @@
+:root {
+  --wood-dark: #2c1810;
+  --wood-light: #4a2c1d;
+  --brass: #d4af37;
+  --ivory: #fffff0;
+  --ivory-shadow: #dcdcdc;
+  --accent: #e74c3c;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #1a1a1a;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.harmonium-container {
+  width: 900px;
+  background: linear-gradient(135deg, var(--wood-dark), var(--wood-light));
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 50px 100px rgba(0,0,0,0.8), inset 0 2px 10px rgba(255,255,255,0.1);
+  border: 4px solid #1a100a;
+  position: relative;
+}
+
+.harmonium-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.brand h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  letter-spacing: 4px;
+  color: var(--brass);
+}
+
+.brand span {
+  font-weight: 300;
+  color: white;
+  margin-left: 5px;
+}
+
+.controls {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.pressure-meter {
+  width: 200px;
+}
+
+.meter-label {
+  font-size: 10px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: rgba(255,255,255,0.6);
+}
+
+.meter-bar {
+  height: 8px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.meter-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f1c40f, #e67e22);
+  box-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.icon-btn.active-cam {
+  color: #2ecc71;
+  filter: drop-shadow(0 0 5px #2ecc71);
+}
+
+.harmonium-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.bellows-slider {
+  position: absolute;
+  top: -30px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0,0,0,0.5);
+  padding: 5px 15px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  z-index: 10;
+}
+
+.bellows-slider input {
+  width: 100px;
+  accent-color: var(--brass);
+}
+
+.bellows-slider span {
+  font-size: 10px;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+.wood-grill {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+  padding: 20px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+}
+
+.grill-slot {
+  width: 4px;
+  height: 60px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 2px;
+}
+
+.keys-section {
+  position: relative;
+  height: 250px;
+  background: #000;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 20px rgba(0,0,0,1);
+}
+
+.keyboard {
+  display: flex;
+  height: 100%;
+  position: relative;
+  gap: 2px;
+}
+
+.key {
+  cursor: pointer;
+  transition: all 0.1s;
+  position: relative;
+}
+
+.key.white {
+  flex: 1;
+  background: linear-gradient(to bottom, #fff 0%, var(--ivory) 100%);
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 5px 0 var(--ivory-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+.key.white.active {
+  background: var(--ivory-shadow);
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 var(--ivory-shadow);
+}
+
+.key-label {
+  font-size: 10px;
+  color: #888;
+  font-weight: 600;
+}
+
+.black-keys {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  pointer-events: none;
+}
+
+.key.black {
+  pointer-events: auto;
+  position: absolute;
+  width: 6%;
+  height: 100%;
+  background: linear-gradient(to bottom, #333 0%, #000 100%);
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 3px 0 #000;
+  z-index: 2;
+}
+
+.key.black.active {
+  background: #222;
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #000;
+}
+
+.harmonium-footer {
+  margin-top: 30px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.bellows-visualization {
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bellows-fold {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 10px,
+    rgba(255,255,255,0.05) 10px,
+    rgba(255,255,255,0.05) 20px
+  );
+}
+
+.icon-glow {
+  color: var(--brass);
+  filter: drop-shadow(0 0 5px var(--brass));
+  margin-right: 15px;
+}
